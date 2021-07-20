@@ -1,4 +1,4 @@
-## Install Python Dependencies
+## **Install Python Dependencies**
 
 If you're install the python for the first time, update first:
 
@@ -10,7 +10,7 @@ Install the dependencies:
 	$ sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev \
     	libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
 
-## Install Python (Include Updating the Python Version)
+## **Install Python (Include Updating the Python Version)**
 
 You need to remove the previous python which installed in `/usr/local/bin/` before update.
 
@@ -36,7 +36,7 @@ Install the python:
 
 The default or installed python by linux system will be saved in `/usr/bin/*3.6*` for **Python3.6**. For the **Python3.8**, it will be saved `/usr/bin/*3.8*`. But, for the manually installed version it will be saved in `/usr/local/bin/*3.6*` for the **Python3.6** and `/usr/local/bin/*3.8*` for the **Python3.8**.
 
-## Handle Multiple Python Version by Changing with Update Alternative
+## **Handle Multiple Python Version by Changing with Update Alternative**
 
 Set the ID of each python version in Update Alternative
 
@@ -69,7 +69,7 @@ Select the pyhton version by enter it's ID:
 
 	Press <enter> to keep the current choice[*], or type selection number:
 
-## Working with Python Virtual Environment
+## **Working with Python Virtual Environment**
 
 Here's the command that i usually use. Start with create environment:
 
@@ -124,4 +124,18 @@ For example:
 Use this command to exit or deactivate the virtual environment:
 
     $ deactivate
+
+## **Static Virtual Environment in VSCode (Optional)**
+
+First, Install `pylint` in your virtual environment:
+
+	$ pip install pylint
+
+Set VSCode to load the virtual environment in `File > Preferences > Settings` and search `Python`. Bellow the `Python: Default Interpreter Path` set the value to your python executable from the virtual envoronment. For example:
+
+	/home/rohwid/PyEnvironment/work-3.8.11-all-packages/bin/python
+
+And bellow the `Python > Linting: Pylint Path` set the value to your python executable from the virtual envoronment. For example:
+
+	/home/rohwid/PyEnvironment/work-3.8.11-all-packages/bin/pylint
 
