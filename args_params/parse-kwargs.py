@@ -1,5 +1,7 @@
 def named(**kwargs):
-    print(kwargs)
+    print('kwargs: ', kwargs)
+    print('named: ', kwargs['name'])
+    print('age: ', kwargs['age'])
 
-named(named="Bod", age=25)
+named(name="Bob", age=25)
 
