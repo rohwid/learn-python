@@ -6,8 +6,15 @@ if var1:
 
 var2 = 0 # False condition
 
-if var2:
+if not var2:
    print("2 - Got a true expression value")
    print(var2)
 
-print("Good bye!")
+var3 = 0
+
+if var3:
+   print("3 - Got a true expression value")
+   print(var3)
+else:
+   print("3 - Got a false expression value")
+   print(var3)
