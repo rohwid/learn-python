@@ -8,6 +8,7 @@ print("Print tuple1 element-0: ", tup1[0])
 print("Print tuple1 element-1 until 5: ", tup2[1:5])
 
 ## Following action is not valid for tuples
+## It means tuple are imutable
 # tup1[0] = 100;
 
 ## Updating tuples
@@ -24,6 +25,7 @@ tup6 = ('physics', 'chemistry', 1997, 2000)
 print("Print all tuple6: ", tup6)
 
 ## Following action is not valid for tuples
+## It means tuple are imutable
 # del tup6[0]
 # print("After deleting tuple6 element-0 : ", tup6)
 
