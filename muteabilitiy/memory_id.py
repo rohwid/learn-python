@@ -2,6 +2,7 @@ a = []
 b = a
 c = []
 d = 1234
+e = "hello"
 
 a.append(35)
 
@@ -20,3 +21,11 @@ print("Print tuple1 element-0: ", tup[0])
 ## Following action is not valid for tuples
 ## It means tuple are imutable
 # tup1[0] = 100;
+
+d += 1
+e += " world"
+
+print(d)
+print(id(d))
+print(e)
+print(id(e))
