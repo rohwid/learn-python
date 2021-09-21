@@ -11,6 +11,7 @@ class Student:
 
 """
 The purpose is to script is to make the value of the object different.
+The new object doesn't contain the value of the previous object.
 """
 
 if __name__ == "__main__":
