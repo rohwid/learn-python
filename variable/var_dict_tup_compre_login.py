@@ -5,10 +5,10 @@ users = [
     (3, "username", "1234")
 ]
 
-username_mapping = {user[1]: user for user in users}
-
 username_input = input("Enter your username: ")
 password_input = input("Enter your password: ")
+
+username_mapping = {user[1]: user for user in users}
 
 _, username, password = username_mapping[username_input]
 
