@@ -1,3 +1,5 @@
+# The default is to run correctly
+
 try:
 	fh = open("test_file.txt", "w")
 	fh.write("This is my test file for exception handling!\n")

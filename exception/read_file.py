@@ -1,7 +1,9 @@
+# The default is to make error
+
 try:
 	fh = open("test_file.txt", "r")
 	fh.write("This is my test file for exception handling!!")
-except IOError:
-	print("Error: can't find file or read data")
+except Exception as err:
+	print(err)
 else:
 	print("Written content in the file successfully")
