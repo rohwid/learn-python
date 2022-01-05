@@ -14,4 +14,7 @@ class Book(Bookself):
         return f'Books with name {self.quantity} are {self.quantity} unit'
 
 book = Book('Python 101', 100)
+
+# Look at the return of the book object when printed
+
 print(book)
