@@ -13,6 +13,8 @@ class Person:
     def display(self):
         print(self.name + "'s age is: " + str(self.age))
 
+# Look at the syntax below (How the Class and Class Method called)
+
 person = Person('Adam', 19)
 person.display()
 

@@ -17,7 +17,7 @@ class Person:
     def display(self):
         print(self.name + "'s age is: " + str(self.age))
 
-# inherit from Person
+# inherit from Person 
 class Man(Person):
     sex = 'Male'
 
