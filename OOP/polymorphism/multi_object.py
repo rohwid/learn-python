@@ -27,6 +27,13 @@ class Printer(Device):
         print(f'Print {pages} remaining pages..')
         self.remaining_pages -= pages
 
+class Scanner(Device):
+    def __init__(self, name, connected_by):
+        super().__init__(name, connected_by)
+    
+    def __str__(self):
+        return f'{super().__str__()}'
+
 printer1 = Device('Printer 1', 'USB')
 print(printer1)
 printer1.disconnected()

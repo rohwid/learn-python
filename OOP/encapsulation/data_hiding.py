@@ -12,4 +12,4 @@ counter.count()
 # Error because of data hiding
 #print(counter.__secretCount)
 
-print(counter._JustCounter__secretCount)
+print(f'Total count: {counter._JustCounter__secretCount}')
