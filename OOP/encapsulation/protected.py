@@ -1,9 +1,9 @@
 # NOTES:
-# _var_name  : protected
-# __var_name : private
+# _var_name  : protected (can inherits or access from child class)
+#              See: _salary and _num_bug_solved
 
 class SoftwareEngineer:
-    def __init__(self, name, age) -> None:
+    def __init__(self, name, age):
         self.name = name
         self.age = age
         self._salary = None

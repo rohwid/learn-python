@@ -1,32 +1,32 @@
 class Parent:
-    parentAttr = 100
+    parent_attr = 100
 
     def __init__(self):
         print("Calling parent constructor")
 
-    def parentMethod(self):
+    def parent_method(self):
         print("Calling parent method")
 
-    def setAttr(self, attr):
-        Parent.parentAttr = attr
+    def set_attr(self, attr):
+        Parent.parent_attr = attr
 
-    def getAttr(self):
-        print("Parent attribute :", Parent.parentAttr)
+    def get_attr(self):
+        print("Parent attribute :", Parent.parent_attr)
 
 # inherit
 class Child(Parent):
     def __init__(self):
         print("Calling child constructor")
 
-    def childMethod(self):
+    def child_method(self):
         print("Calling child method")
 
-    def getParentAttr(self):
-        print("Child attribute :", Parent.parentAttr)
+    def get_parent_attr(self):
+        print("Child attribute :", Parent.parent_attr)
 
 c = Child()
-c.childMethod()
-c.parentMethod()
-c.setAttr(200)
-c.getAttr()
-c.getParentAttr()
+c.child_method()
+c.parent_method()
+c.set_attr(200)
+c.get_attr()
+c.get_parent_attr()

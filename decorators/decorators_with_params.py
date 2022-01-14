@@ -1,6 +1,5 @@
 import functools
 
-user = {"username": "jose", "access_level": "guest"}
 
 def make_secure(access_level): # factory: function to create decorator
     def decorator(func):
@@ -27,6 +26,8 @@ def get_admin_password():
 @make_secure("user")
 def get_dashboard_password():
     return "user: user_password"
+
+user = {"username": "jose", "access_level": "guest"}
 
 print(get_admin_password())
 print(get_dashboard_password())

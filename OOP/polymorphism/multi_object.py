@@ -18,27 +18,40 @@ class Printer(Device):
         self.remaining_pages = capacity
     
     def __str__(self):
-        return f'{super().__str__()} ({self.remaining_pages} pages remaining)'
+        return f'{super().__str__()!r}'
 
-    def print(self, pages):
-        if not self.connected_by:
+    def action(self, pages = None):
+        if not self.connected:
             print('Your printer is not connected!')
         
-        print(f'Print {pages} remaining pages..')
         self.remaining_pages -= pages
+        print(f'{self.name} is printing {self.capacity}.. ({self.remaining_pages} pages remaining)\n')
 
 class Scanner(Device):
     def __init__(self, name, connected_by):
         super().__init__(name, connected_by)
     
     def __str__(self):
-        return f'{super().__str__()}'
+        return f'{super().__str__()!r}'
 
-printer1 = Device('Printer 1', 'USB')
-print(printer1)
-printer1.disconnected()
+    def action(self):
+        if not self.connected:
+            print('Your scanner is not connected!')
+        
+        print(f'Scanning the document..\n')
 
-printer2 = Printer('Printer 2', 'WIFI', 500)
-print(printer2)
-printer2.print(20)
-printer2.disconnected()
+
+if __name__ == "__main__":
+
+    devices = {
+        'printer': [Printer('Printer 1', 'USB', 500), Printer('Printer 2', 'WIFI', 1500)],
+        'scanner': [Scanner('Scanner 1', 'USB'), Scanner('Scanner 2', 'WIFI')]
+    }
+
+    for device in devices['printer']:
+        print(device)
+        device.action(5)
+
+    for device in devices['scanner']:
+        print(device)
+        device.action()

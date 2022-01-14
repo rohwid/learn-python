@@ -13,7 +13,7 @@ class Device:
 
 class Printer(Device):
     def __init__(self, name, connected_by, capacity):
-        super().__init__(name, connected_by)
+        super().__init__(name, connected_by) # Call the constructor and set params
         self.capacity = capacity
         self.remaining_pages = capacity
     
@@ -21,11 +21,11 @@ class Printer(Device):
         return f'{super().__str__()} ({self.remaining_pages} pages remaining)'
 
     def print(self, pages):
-        if not self.connected_by:
+        if not self.connected:
             print('Your printer is not connected!')
-        
-        print(f'Print {pages} remaining pages..')
-        self.remaining_pages -= pages
+        else:
+            print(f'Print {pages} remaining pages..')
+            self.remaining_pages -= pages
 
 printer1 = Device('Printer 1', 'USB')
 print(printer1)
