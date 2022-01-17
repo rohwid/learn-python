@@ -1,1 +1,3 @@
-**The decorators** are usually to modify the function or replace with another function.
+## Decorators
+
+**The decorators** are usually to modify the function or replace with another function. If do you wanna know how the decorators work, look at the `without_decorator.py`. That's how the decorators works, **a function that will be return the other function** with or without specific condition. In python, there's syntax to simplify in `with_decorator.py`. If there's need to parse a params like `@make_secure("admin")` at `decorators_with_params.py`.
