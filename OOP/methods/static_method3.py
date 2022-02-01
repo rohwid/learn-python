@@ -9,12 +9,17 @@ class Dates:
     def toDashDate(date):
         return date.replace("/", "-")
 
+    def show_date(self):
+        print(Dates.toDashDate(self.date))
+
 class DatesWithSlashes(Dates):
     def getDate(self):
         return Dates.toDashDate(self.date)
 
 date = Dates("15-12-2016")
 dateFromDB = DatesWithSlashes("15/12/2016")
+
+date.show_date()
 
 if(date.getDate() == dateFromDB.getDate()):
     print("Equal")
