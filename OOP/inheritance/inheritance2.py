@@ -24,14 +24,15 @@ class Printer(Device):
         if not self.connected:
             print('Your printer is not connected!')
         else:
-            print(f'Print {pages} remaining pages..')
+            print(f'Printing {pages} pages..')
             self.remaining_pages -= pages
+            print(f'{self.remaining_pages}/{self.capacity} paper left.')
 
 printer1 = Device('Printer 1', 'USB')
-print(printer1)
+print(printer1) # Will call __str__ method
 printer1.disconnected()
 
 printer2 = Printer('Printer 2', 'WIFI', 500)
-print(printer2)
+print(printer2) # Will call __str__ method
 printer2.print(20)
 printer2.disconnected()

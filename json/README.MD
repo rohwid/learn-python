@@ -1,4 +1,4 @@
-### Note:
+### **Note**
 
 + **Encode** = Serialization
 + **Decode** = Deserialization

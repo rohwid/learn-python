@@ -11,7 +11,7 @@ class Parent:
         Parent.parent_attr = attr
 
     def get_attr(self):
-        print("Parent attribute :", Parent.parent_attr)
+        print("Parent attribute :", self.parent_attr)
 
 # inherit
 class Child(Parent):
@@ -22,7 +22,7 @@ class Child(Parent):
         print("Calling child method")
 
     def get_parent_attr(self):
-        print("Child attribute :", Parent.parent_attr)
+        print("Child attribute :", self.parent_attr)
 
 c = Child()
 c.child_method()

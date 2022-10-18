@@ -25,3 +25,5 @@ shelf = BookShelf(book1, book2)
 print(shelf)
 
 print(shelf.title(0))
+
+print(shelf.title(1))
