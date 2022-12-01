@@ -27,11 +27,13 @@ class SoftwareEngineer:
             return base_value * 2
         return base_value * 3
 
-se = SoftwareEngineer("Max", 25)
-print(se.age, se.name)
 
-for i in range(70):
-    se.code()
+if __name__ == "__main__":
+    se = SoftwareEngineer("Max", 25)
+    print(se.age, se.name)
 
-se.set_salary(6000)
-print(se.get_salary())
+    for i in range(70):
+        se.code()
+
+    se.set_salary(6000)
+    print(se.get_salary())

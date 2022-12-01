@@ -1,3 +1,5 @@
+from helper.status import employee_status
+
 class Employee:
     # alias
     company_name = "Pacmann"
@@ -15,16 +17,4 @@ class Employee:
 
     def displayEmployee(self):
         print("Name : ", self.name,  ", Salary: ", self.salary)
-
-
-if __name__ == "__main__":
-    emp1 = Employee("Zara", 2000)
-    emp2 = Employee("Manni", 5000)
-    emp3 = Employee("Larsson", 15000)
-
-    emp1.displayEmployee()
-    emp2.displayEmployee()
-    emp3.displayEmployee()
-
-    print("\nCompany Name: ", Employee.company_name)
-    print("Total Employee: ", Employee.emp_count)
+        print(employee_status(self.salary))

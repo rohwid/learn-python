@@ -14,9 +14,13 @@ class SoftwareEngineer:
     def salary(self):
         del self._salary
 
-se = SoftwareEngineer()
-
-se.salary = 6000
-print(se.salary)
-del se.salary
-# print(se.salary)
+if __name__ == "__main__":
+    se = SoftwareEngineer()
+    
+    se.salary = 6000
+    print(se.salary)
+    
+    del se.salary
+    
+    # It will return error (because deleted)
+    # print(se.salary)
