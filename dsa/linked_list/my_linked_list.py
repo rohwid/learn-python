@@ -2,6 +2,9 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None  # make None as the default value for next.
+        
+    def __str__(self):
+        return f"{self.data}"
 
 def count_nodes(head):
     current = head # assuming that head != None
@@ -24,5 +27,9 @@ node_b.next = node_c
 node_c.next = node_d
 node_d.next = node_e
 
-print("This linked list's length is: (should print 5)")
-print(count_nodes(node_a))
+print(f"This linked list's length (should be 5): {count_nodes(node_a)}")
+print(f"The first node: {node_a.data}")
+print(f"The next node: {node_a.next}")
+
+
+

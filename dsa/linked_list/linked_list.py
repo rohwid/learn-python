@@ -24,5 +24,4 @@ node_b.next = node_c
 node_c.next = node_d
 node_d.next = node_e
 
-print("This linked list's length is: (should print 5)")
-print(count_nodes(node_a))
+print(f"This linked list's length (should be 5): {count_nodes(node_a)}")
