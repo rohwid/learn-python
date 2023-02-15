@@ -21,8 +21,10 @@ class Person:
 class Man(Person):
     sex = 'Male'
 
-man = Man.fromBirthYear('John', 1985)
-print(isinstance(man, Man))
-
-man1 = Man.fromFathersAge('John', 1965, 20)
+man1 = Man.fromBirthYear('John', 1985)
 print(isinstance(man1, Man))
+man1.display()
+
+man2 = Man.fromFathersAge('John', 1965, 20)
+print(isinstance(man2, Man))
+man2.display()
