@@ -140,7 +140,7 @@ There are 2 choices for the alternative python (providing /usr/bin/python).
 
 Selection    Path                      Priority   Status
 ------------------------------------------------------------
-  		* 0            /usr/local/bin/python3.8   2         auto mode
+  * 0            /usr/local/bin/python3.8   2         auto mode
 	1            /usr/bin/python3.6         1         manual mode
 	2            /usr/local/bin/python3.8   2         manual mode
 
