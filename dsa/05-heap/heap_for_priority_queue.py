@@ -5,12 +5,15 @@ class MaxHeap:
 	def insert(self, val):
 		self.heap.append(val)
 		self.heapify_up()
+		print(f"Current Task: {self.heap}")
 
 	def remove(self):
 		if len(self.heap) == 0:
 			return None
+
 		if len(self.heap) == 1:
 			return self.heap.pop()
+
 		val = self.heap[0]
 		self.heap[0] = self.heap.pop()
 		self.heapify_down()
@@ -18,8 +21,11 @@ class MaxHeap:
 
 	def heapify_up(self):
 		idx = len(self.heap) - 1
+
+		# swap to append the largest
 		while idx > 0:
 			parent_idx = (idx - 1) // 2
+			
 			if self.heap[idx] > self.heap[parent_idx]:
 				self.heap[idx], self.heap[parent_idx] = self.heap[parent_idx], self.heap[idx]
 				idx = parent_idx
@@ -28,13 +34,19 @@ class MaxHeap:
 
 	def heapify_down(self):
 		idx = 0
+
+		# swap for root election or get the largest
 		while idx * 2 + 1 < len(self.heap):
 			left_child_idx = idx * 2 + 1
 			right_child_idx = idx * 2 + 2
+
+			# swap last two index
 			if right_child_idx < len(self.heap) and self.heap[right_child_idx] > self.heap[left_child_idx]:
 				largest_child_idx = right_child_idx
 			else:
 				largest_child_idx = left_child_idx
+
+			# swap last index with current index
 			if self.heap[idx] < self.heap[largest_child_idx]:
 				self.heap[idx], self.heap[largest_child_idx] = self.heap[largest_child_idx], self.heap[idx]
 				idx = largest_child_idx
@@ -55,10 +67,11 @@ class PriorityQueue:
 # Example usage
 pq = PriorityQueue()
 pq.insert('Task 1', 1)
-pq.insert('Task 2', 2)
 pq.insert('Task 3', 3)
+pq.insert('Task 5', 5)
+pq.insert('Task 2', 2)
 pq.insert('Task 4', 4)
-print(pq.remove()) # Output: Task 4
+print(pq.remove()) # Output: Task 5
 print(pq.remove()) # Output: Task 3
 print(pq.remove()) # Output: Task 2
 print(pq.remove()) # Output: Task 1

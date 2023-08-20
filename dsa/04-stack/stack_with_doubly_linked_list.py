@@ -1,8 +1,8 @@
 # A complete working Python program to
 # demonstrate all stack operations using
 # a doubly linked list
-class node:
-  def __init__(self,val):
+class Node:
+  def __init__(self, val):
     self.val = val
     self.prev = None
     self.next = None
@@ -18,20 +18,21 @@ class Stack:
     
     return True
 
-  # pushes element onto stack
-  def push(self,element):
-    newP = node(element)
+  # Pushes element onto stack
+  def push(self, element):
+    node = Node(element) # instantiate new node
     
     if self.start == None:
-      self.start = self.top = newP
+      self.start = self.top = node
       return
     
-    newP.prev = self.top
-    self.top.next = newP
-    self.top = newP
+    # Swapping value
+    node.prev = self.top
+    self.top.next = node
+    self.top = node
 
   # Determines the size of the stack
-  def stacksize(self):
+  def stack_size(self):
     curr = self.start
     len = 0
     
@@ -44,17 +45,19 @@ class Stack:
   # Pops top element from stack
   def pop(self):
     if self.isEmpty():
-      print('List is Empty')
+      print('Stack is Empty')
       return
     
     self.top = self.top.prev
     
     if self.top != None: self.top.next = None
+    
+    print("\nOne element popped from the stack.\n")
 
   # Prints the stack
-  def printstack(self):
+  def print_stack(self):
     if self.isEmpty():
-      print('List is Empty')
+      print('Stack is Empty.')
       return
     
     curr = self.start
@@ -66,23 +69,33 @@ class Stack:
     print()
 
   # Prints top element of the stack
-  def topelement(self):
+  def top_element(self):
     if self.isEmpty():
-      print("Stack is empty")
+      print("Stack is empty.")
     else:
-      print("The element at top of the stack is : ",self.top.val)
+      print("The element of the top stack is : ", self.top.val)
 
 
-stack = Stack()
-stack.push(2)
-stack.push(5)
-stack.push(10)
-stack.printstack()
-stack.topelement()
-stack.stacksize()
-stack.pop()
-print("Element popped from the stack ")
-stack.topelement()
-stack.pop()
-print("Element popped from the stack")
-stack.stacksize()
+if __name__ == "__main__":
+  stack = Stack()
+
+  # Push then instantiate new node
+  stack.push(2)
+  stack.push(5)
+  stack.push(7)
+
+  stack.print_stack()
+  stack.top_element()
+  stack.stack_size()
+
+  stack.pop()
+
+  stack.print_stack()
+  stack.top_element()
+  stack.stack_size()
+
+  stack.pop()
+  
+  stack.print_stack()
+  stack.top_element()
+  stack.stack_size()
