@@ -7,7 +7,7 @@ class Node:
         return f"{self.data}"
 
 def count_nodes(head):
-    current = head # assuming that head != None
+    current = head # assuming that "head != None" or initialized
     count = 1
     
     while current.next is not None:

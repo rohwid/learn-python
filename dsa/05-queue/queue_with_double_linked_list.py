@@ -17,26 +17,28 @@ class Queue:
     # Function to initialize head
     def __init__(self):
         self.head = None
-        self.last=None
+        self.last = None
         
     # Function to add an element data in the Queue
     def enqueue(self, data):
         if self.last is None:
-            self.head =Node(data)
-            self.last =self.head
-        else:
+            self.head = Node(data)
+            self.last = self.head
+        
+        if self.last:
             self.last.next = Node(data)
-            self.last.next.prev=self.last
+            self.last.next.prev = self.last
             self.last = self.last.next
 			
     # Function to remove first element and return the element from the queue
     def dequeue(self):
         if self.head is None:
             return None
-        else:
-            temp= self.head.data
+        
+        if self.head:
+            temp = self.head.data
             self.head = self.head.next
-            self.head.prev=None
+            self.head.prev = None
             return temp
 
     # Function to return top element in the queue
@@ -94,10 +96,10 @@ if __name__=='__main__':
     queue.printqueue()
 
     # Print the first element
-    print("\nfirst element is ",queue.first())
+    print("\nfirst element is ", queue.first())
 
     # Print the queue size
-    print("Size of the queue is ",queue.size())
+    print("Size of the queue is ", queue.size())
 
     # remove the first element
     queue.dequeue()
