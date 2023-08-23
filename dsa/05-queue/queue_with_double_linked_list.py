@@ -1,7 +1,3 @@
-# A complete working Python program to demonstrate all
-# Queue operations using doubly linked list
-
-# Node class
 class Node:
 
     # Function to initialise the node object
@@ -10,8 +6,6 @@ class Node:
         self.next = None # Initialize next as null
         self.prev = None # Initialize prev as null
 		
-		
-# Queue class contains a Node object
 class Queue:
     
     # Function to initialize head

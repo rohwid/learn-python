@@ -1,6 +1,3 @@
-# A complete working Python program to
-# demonstrate all stack operations using
-# a doubly linked list
 class Node:
   def __init__(self, val):
     self.val = val

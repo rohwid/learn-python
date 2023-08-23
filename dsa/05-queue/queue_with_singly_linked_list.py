@@ -1,19 +1,8 @@
-# Python3 program to demonstrate linked list
-# based implementation of queue
-
-# A linked list (LL) node
-# to store a queue entry
-
 class Node:
 
 	def __init__(self, data):
 		self.data = data
 		self.next = None
-
-# A class to represent a queue
-
-# The queue, front stores the front node
-# of LL and rear stores the last node of LL
 
 class Queue:
     def __init__(self):

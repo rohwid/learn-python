@@ -1,7 +1,3 @@
-# Python program to demonstrate
-# stack implementation using a linked list.
-# node class
-
 class Node:
 	def __init__(self, value):
 		self.value = value
