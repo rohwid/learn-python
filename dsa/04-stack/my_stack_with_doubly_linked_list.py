@@ -1,3 +1,5 @@
+from random import randint
+
 class Node:
   def __init__(self, value):
     self.value = value
@@ -6,7 +8,7 @@ class Node:
 	
 class Stack:
   def __init__(self):
-    self.head = None
+    self.start = self.head = None
     self.size = 0
 
   # Pushes element onto stack
@@ -15,13 +17,13 @@ class Stack:
     
     self.size += 1
     
-    if self.head == None:
-      self.head = node
+    if self.start == None:
+      self.start = self.head = node
       return
     
     # Iteration step by swapping value
-    # 0th  - [start_node/top_node]
-    # 1st  - [start_node, top_node] 
+    # 0th  - [head_node]
+    # 1st  - [prev_head_node, new_head_node] 
     # 2nd  - [start_node, prev_node, top_node]
     # n-th - [start_node, prev_node, ..., top_node]
     node.prev = self.head 
@@ -48,25 +50,70 @@ class Stack:
     
     self.size -= 1
   
+  # Prints the stack from start node
+  def print_stack(self):
+    if self.is_empty():
+      return 'Stack is Empty.'
+    
+    curr = self.start
+    out = ''
+    
+    while curr != None:
+      out += str(curr.value) + ' '
+      curr = curr.next
+      
+    return out
+  
+  # Prints the stack from head node
+  # def print_stack(self):
+  #   if self.is_empty():
+  #     return 'Stack is Empty.'
+    
+  #   curr = self.head
+  #   out = ''
+    
+  #   while curr != None:
+  #     out += str(curr.value) + ' '
+  #     curr = curr.prev
+      
+  #   return out
+  
   # Get size of the stack with the size variable
   def stack_size(self):
     if self.is_empty():
       return "Stack is empty."
     return self.size
   
-  # Prints the stack
-  def print_stack(self):
-    if self.is_empty():
-      return 'Stack is Empty.'
+  # Get size of the stack with next object
+  # def stack_size(self):
+  #   if self.is_empty():
+  #     return "Stack is empty."
+  
+    # Start count from head
+    # curr = self.start
+    # len = 0
     
-    curr = self.head
-    out = ''
+    # while curr != None:
+    #   len += 1
+    #   curr = curr.next
     
-    while curr != None:
-      out += str(curr.value) + ' '
-      curr = curr.prev
-      
-    return out
+    # return len
+  
+  # Get size of the stack with prev object
+  # Commented because it's optional
+  # def stack_size(self):
+  #   if self.is_empty():
+  #     return "Stack is empty."
+    
+    # Start count from head
+    # curr = self.head
+    # len = 0
+    
+    # while curr != None:
+    #   len += 1
+    #   curr = curr.prev
+    
+    # return len
 
   # Prints top element of the stack
   def head_element(self):
@@ -74,34 +121,27 @@ class Stack:
       return "Stack is empty."
     else:
       return self.head.value
-
-  # Get size of the stack from prev object
-  # def stack_size(self):
-  #   if self.is_empty():
-  #     return "Stack is empty."
-    
-  #   curr = self.head
-  #   len = 0
-    
-  #   while curr != None:
-  #     len += 1
-  #     curr = curr.prev
-    
-  #   return len
+  
+  def start_element(self):
+    if self.is_empty():
+      return "Stack is empty."
+    else:
+      return self.start.value
 
 def stack_info(stack):
   print(f"--------------- INFO ---------------")
-  print(f"Stack Empty       : {stack.is_empty()}")
-  print(f"Stack Content     : {stack.print_stack()}")
-  print(f"Stack Count       : {stack.stack_size()}")
-  print(f"Stack Top Element : {stack.head_element()}\n")
+  print(f"Stack Empty         : {stack.is_empty()}")
+  print(f"Stack Content       : {stack.print_stack()}")
+  print(f"Stack Count         : {stack.stack_size()}")
+  print(f"Stack Start Element : {stack.start_element()}")
+  print(f"Stack Top Element   : {stack.head_element()}\n")
 
 if __name__ == "__main__":
   stack = Stack()
 
   # Push then instantiate new node
   for i in range(10):
-    stack.push(i + 1)
+    stack.push(randint(1, 9))
     
   stack_info(stack)
 
