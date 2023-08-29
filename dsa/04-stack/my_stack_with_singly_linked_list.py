@@ -43,11 +43,11 @@ class Stack:
 			self.head = new_node
 			return
         
-        # Iteration step
+        # Iteration step by swapping value
         # 0th  - [head]
-        # 1st  - [new_node, previous_head] 
-        # 2nd  - [new_node, previous_head, previous_head]
-        # n-th - [new_node, previous_head, ..., previous_head]
+        # 1st  - [new_node, next_head] 
+        # 2nd  - [new_node, next_head, next_head]
+        # n-th - [new_node, next_head, ..., next_head]
 		new_node.next = self.head # initiate the next node
 		self.head = new_node # append new node
 
@@ -58,7 +58,7 @@ class Stack:
 			return
 
 		# Iteration step
-        # n-th - [delete_node <- previous_tail, previous_tail, ..., previous_tail]
+        # n-th - [delete_node <- next_head, next_head, ..., next_head]
         # final length n = start length n - number loop range
 		remove = self.head
 		self.head = self.head.next
@@ -69,9 +69,9 @@ class Stack:
 
 def stack_info(stack):
     print(f"--------------- INFO ---------------")
-    print(f"Stack Content: {stack}")
-    print(f"Stack Count  : {stack.get_size()}")
-    print(f"Stack Empty  : {stack.is_empty()}\n")
+    print(f"Stack Empty   : {stack.is_empty()}")
+    print(f"Stack Content : {stack}")
+    print(f"Stack Count   : {stack.get_size()}\n")
 
 # Driver Code
 if __name__ == "__main__":
@@ -87,6 +87,6 @@ if __name__ == "__main__":
     for _ in range(5):
         remove = stack.pop()
         print(f"Pop: {remove}")
-    
     print()
+    
     stack_info(stack)
