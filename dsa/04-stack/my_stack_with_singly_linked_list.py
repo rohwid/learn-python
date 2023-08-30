@@ -27,6 +27,8 @@ class Stack:
 
 	# Get the current size of the stack
 	def get_size(self):
+		if not self.size:
+			return "Stack is Empty."
 		return self.size
 
 	# Check if the stack is empty
@@ -81,6 +83,8 @@ if __name__ == "__main__":
     
     for i in range(10):
         stack.push(i + 1)
+        print(f"Push: {i + 1}")
+    print()
     
     stack_info(stack)
     

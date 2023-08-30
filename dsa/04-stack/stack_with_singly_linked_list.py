@@ -27,6 +27,8 @@ class Stack:
 
 	# Get the current size of the stack
 	def get_size(self):
+		if not self.size:
+			return "Stack is Empty."
 		return self.size
 
 	# Check if the stack is empty
@@ -45,9 +47,10 @@ class Stack:
 	# Push a value into the next stack
 	# as an object.
 	def push(self, value):
-		node = Node(value)
-		node.next = self.head.next
-		self.head.next = node
+		new_node = Node(value)
+		new_node.next = self.head.next
+		self.head.next = new_node
+		
 		self.size += 1
 
 	# Remove a value from the stack 
@@ -73,14 +76,16 @@ if __name__ == "__main__":
     
     stack_info(stack)
     
-    for i in range(1, 11):
-        stack.push(i)
+    for i in range(10):
+        stack.push(i + 1)
+        print(f"Push: {i + 1}")
+    print()
     
     stack_info(stack)
     
-    for _ in range(1, 6):
+    for _ in range(5):
         remove = stack.pop()
         print(f"Pop: {remove}")
-    
     print()
+    
     stack_info(stack)
