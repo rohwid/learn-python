@@ -12,9 +12,10 @@ class Stack:
     self.size = 0
 
   # Pushes element onto stack
-  def push(self, element):
-    node = Node(element) # instantiate new node
+  def push(self, value):
+    node = Node(value) # instantiate new node
     
+    print(f"Push: {value}")
     self.size += 1
     
     if self.start == None:
@@ -32,14 +33,13 @@ class Stack:
   
   # Check if stack is empty
   def is_empty(self):
-    if self.head:
+    if self.start:
       return False
     return True
 
   # Pops top element from stack
   def pop(self):
     if self.is_empty():
-      print('Stack is Empty')
       return
     
     print(f"Pop: {self.head.value}")
@@ -47,6 +47,7 @@ class Stack:
     self.head = self.head.prev
     
     if self.head != None: self.head.next = None
+    if self.head == None: self.start = None
     
     self.size -= 1
   
@@ -142,10 +143,11 @@ if __name__ == "__main__":
   # Push then instantiate new node
   for i in range(10):
     stack.push(randint(1, 9))
+  print()
     
   stack_info(stack)
 
-  for i in range(7):
+  for i in range(6):
     stack.pop()
   print()
 

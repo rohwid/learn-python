@@ -1,6 +1,8 @@
+from random import randint
+
 class Node:
-  def __init__(self, val):
-    self.val = val
+  def __init__(self, value):
+    self.value = value
     self.prev = None
     self.next = None
 	
@@ -9,19 +11,20 @@ class Stack:
     self.start = self.top = None
     
   # Check if stack is empty
-  def isEmpty(self):
+  def is_empty(self):
     if self.start:
       return False
-    
     return True
 
   # Pushes element onto stack
-  def push(self, element):
-    node = Node(element) # instantiate new node
+  def push(self, value):
+    node = Node(value) # instantiate new node
     
     if self.start == None:
       self.start = self.top = node
       return
+    
+    print(f"Push: {value}")
     
     # Swapping value
     node.prev = self.top
@@ -30,6 +33,9 @@ class Stack:
 
   # Determines the size of the stack
   def stack_size(self):
+    if self.is_empty():
+      return "Stack is empty."
+    
     curr = self.start
     len = 0
     
@@ -37,62 +43,69 @@ class Stack:
       len += 1
       curr = curr.next
     
-    print("Size of the stack is : ", len)
+    return len
 
   # Pops top element from stack
   def pop(self):
-    if self.isEmpty():
-      print('Stack is Empty')
+    if self.is_empty():
       return
+    
+    print(f"Pop: {self.top.value}")
     
     self.top = self.top.prev
     
     if self.top != None: self.top.next = None
-    
-    print("\nOne element popped from the stack.\n")
+    if self.top == None: self.start = None
 
   # Prints the stack
   def print_stack(self):
-    if self.isEmpty():
-      print('Stack is Empty.')
-      return
+    if self.is_empty():
+      return 'Stack is Empty.'
     
     curr = self.start
-    print("Stack is : ", end='')
+    out = ''
     
     while curr != None:
-      print(curr.val, end = ' ')
+      out += str(curr.value) + ' '
       curr = curr.next
-    print()
+      
+    return out
+  
+  # Prints top element of the stack
+  def start_element(self):
+    if self.is_empty():
+      return "Stack is empty."
+    else:
+      return self.start.value
 
   # Prints top element of the stack
   def top_element(self):
-    if self.isEmpty():
-      print("Stack is empty.")
+    if not self.top:
+      return "Stack is empty."
     else:
-      print("The element of the top stack is : ", self.top.val)
+      return self.top.value
+  
+def stack_info(stack):
+  print(f"--------------- INFO ---------------")
+  print(f"Stack Empty         : {stack.is_empty()}")
+  print(f"Stack Content       : {stack.print_stack()}")
+  print(f"Stack Count         : {stack.stack_size()}")
+  print(f"Stack Start Element : {stack.start_element()}")
+  print(f"Stack Top Element   : {stack.top_element()}\n")
 
 
 if __name__ == "__main__":
   stack = Stack()
 
   # Push then instantiate new node
-  stack.push(2)
-  stack.push(5)
-  stack.push(7)
+  for i in range(10):
+    stack.push(randint(1, 9))
+  print()
+    
+  stack_info(stack)
 
-  stack.print_stack()
-  stack.top_element()
-  stack.stack_size()
+  for i in range(6):
+    stack.pop()
+  print()
 
-  stack.pop()
-
-  stack.print_stack()
-  stack.top_element()
-  stack.stack_size()
-
-  stack.pop()
-  
-  stack.print_stack()
-  stack.top_element()
-  stack.stack_size()
+  stack_info(stack)
