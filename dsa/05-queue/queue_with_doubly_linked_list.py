@@ -41,11 +41,10 @@ class Queue:
         if self.is_empty():
             return "Queue is empty."
         
-        if self.front:
-            temp = self.front.value
-            self.front = self.front.next
-            
-            return temp
+        temp = self.front.value
+        self.front = self.front.next
+        
+        return temp
 
     # Function to return the size of the queue
     def queue_size(self):

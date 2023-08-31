@@ -17,16 +17,16 @@ class Queue:
         
     # Function to add an element value in the Queue
     def enqueue(self, value):
-        temp = Node(value)
+        push_node = Node(value)
         
         if not self.rear:
-            self.front = self.rear = temp
+            self.front = self.rear = push_node
             self.front.next = self.rear
             self.rear.prev = self.front
         else: # prevent created double rear node
-            self.rear.prev = self.rear
-            self.rear.next = temp
-            self.rear = temp
+            push_node.prev = self.rear # set the previous node as the previous object of the push_node
+            self.rear.next = push_node # set the push_node node as the next object node of the previous node
+            self.rear = push_node # set push_node as the current rear node 
         
         return self.rear.value
     
@@ -41,11 +41,10 @@ class Queue:
         if self.is_empty():
             return "Queue is empty."
         
-        if self.front:
-            temp = self.front.value
-            self.front = self.front.next
-            
-            return temp
+        pop_node = self.front.value
+        self.front = self.front.next
+        
+        return pop_node
 
     # Function to return the size of the queue
     def queue_size(self):
