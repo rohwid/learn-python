@@ -1,3 +1,5 @@
+from random import randint
+
 class Node:
 	def __init__(self, value):
 		self.value = value
@@ -13,12 +15,12 @@ class Stack:
 
 	# String representation of the stack
 	def __str__(self):
-		cur = self.head.next
+		curr = self.head.next
 		out = ""
 
-		while cur:
-			out += str(cur.value) + " "
-			cur = cur.next
+		while curr:
+			out += str(curr.value) + " "
+			curr = curr.next
 
 		if out:
 			return out
@@ -47,11 +49,13 @@ class Stack:
 	# Push a value into the next stack
 	# as an object.
 	def push(self, value):
-		new_node = Node(value)
-		new_node.next = self.head.next
-		self.head.next = new_node
+		push_node = Node(value)
+		push_node.next = self.head.next
+		self.head.next = push_node
 		
 		self.size += 1
+
+		return push_node.value
 
 	# Remove a value from the stack 
 	# and return.
@@ -59,10 +63,10 @@ class Stack:
 		if self.is_empty():
 			raise Exception("Popping from an empty stack")
 
-		remove = self.head.next
+		pop_node = self.head.next
 		self.head.next = self.head.next.next
 		self.size -= 1
-		return remove.value
+		return pop_node.value
 
 def stack_info(stack):
     print(f"--------------- INFO ---------------")
@@ -76,16 +80,16 @@ if __name__ == "__main__":
     
     stack_info(stack)
     
-    for i in range(10):
-        stack.push(i + 1)
-        print(f"Push: {i + 1}")
+    for _ in range(10):
+        push = stack.push(randint(1, 9))
+        print(f"Push: {push}")
     print()
     
     stack_info(stack)
     
     for _ in range(5):
-        remove = stack.pop()
-        print(f"Pop: {remove}")
+        pop = stack.pop()
+        print(f"Pop: {pop}")
     print()
     
     stack_info(stack)

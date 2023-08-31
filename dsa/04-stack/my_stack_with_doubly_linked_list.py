@@ -8,28 +8,24 @@ class Node:
 	
 class Stack:
   def __init__(self):
-    self.start = self.head = None
+    self.start = self.top = None
     self.size = 0
 
   # Pushes element onto stack
   def push(self, value):
-    node = Node(value) # instantiate new node
+    push_node = Node(value) # instantiate new node
     
-    print(f"Push: {value}")
     self.size += 1
     
     if self.start == None:
-      self.start = self.head = node
+      self.start = self.top = push_node
       return
     
-    # Iteration step by swapping value
-    # 0th  - [head_node]
-    # 1st  - [prev_head_node, new_head_node] 
-    # 2nd  - [start_node, prev_node, top_node]
-    # n-th - [start_node, prev_node, ..., top_node]
-    node.prev = self.head 
-    self.head.next = node
-    self.head = node
+    push_node.prev = self.top # set previous top node as the previous object of the push_node
+    self.top.next = push_node # set push_node as the next object of previous top node
+    self.top = push_node # set push_node as the current top node
+    
+    return push_node.value
   
   # Check if stack is empty
   def is_empty(self):
@@ -42,14 +38,18 @@ class Stack:
     if self.is_empty():
       return
     
-    print(f"Pop: {self.head.value}")
+    pop_node = self.top # pop the top node
+    self.top = self.top.prev # set the top node to the previous node
     
-    self.head = self.head.prev
-    
-    if self.head != None: self.head.next = None
-    if self.head == None: self.start = None
+    # set next node to none
+    if self.top: self.top.next = None
+
+    # reset start node
+    if not self.top: self.start = None
     
     self.size -= 1
+    
+    return pop_node.value
   
   # Prints the stack from start node
   def print_stack(self):
@@ -65,12 +65,12 @@ class Stack:
       
     return out
   
-  # Prints the stack from head node
+  # Prints the stack from top node
   # def print_stack(self):
   #   if self.is_empty():
   #     return 'Stack is Empty.'
     
-  #   curr = self.head
+  #   curr = self.top
   #   out = ''
     
   #   while curr != None:
@@ -90,7 +90,7 @@ class Stack:
   #   if self.is_empty():
   #     return "Stack is empty."
   
-    # Start count from head
+    # Start count from start node
     # curr = self.start
     # len = 0
     
@@ -106,8 +106,8 @@ class Stack:
   #   if self.is_empty():
   #     return "Stack is empty."
     
-    # Start count from head
-    # curr = self.head
+    # Start count from top
+    # curr = self.top
     # len = 0
     
     # while curr != None:
@@ -117,11 +117,11 @@ class Stack:
     # return len
 
   # Prints top element of the stack
-  def head_element(self):
+  def top_element(self):
     if self.is_empty():
       return "Stack is empty."
     else:
-      return self.head.value
+      return self.top.value
   
   def start_element(self):
     if self.is_empty():
@@ -135,20 +135,22 @@ def stack_info(stack):
   print(f"Stack Content       : {stack.print_stack()}")
   print(f"Stack Count         : {stack.stack_size()}")
   print(f"Stack Start Element : {stack.start_element()}")
-  print(f"Stack Top Element   : {stack.head_element()}\n")
+  print(f"Stack Top Element   : {stack.top_element()}\n")
 
 if __name__ == "__main__":
   stack = Stack()
 
   # Push then instantiate new node
   for i in range(10):
-    stack.push(randint(1, 9))
+    push = stack.push(randint(1, 9))
+    print(f"Push: {push}")
   print()
     
   stack_info(stack)
 
   for i in range(6):
-    stack.pop()
+    pop = stack.pop()
+    print(f"Pop: {pop}")
   print()
 
   stack_info(stack)

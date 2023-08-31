@@ -8,11 +8,14 @@ class Queue:
     def __init__(self):
         self.front = self.rear = None
     
-    def isEmpty(self):
+    def is_empty(self):
         return self.front == None
     
-    def count_nodes(self, head):
-        current = head # assuming that head != None
+    def count_nodes(self):
+        if self.is_empty():
+            return 'Queue Empty'
+        
+        current = self.front
         count = 1
         
         while current.next is not None:
@@ -22,7 +25,7 @@ class Queue:
         return count
     
     # Method to add an item to the queue
-    def EnQueue(self, item):
+    def enqueue(self, item):
         temp = Node(item)
         
         if self.rear == None:
@@ -33,8 +36,8 @@ class Queue:
         self.rear = temp
 
 	# Method to remove an item from queue
-    def DeQueue(self):
-        if self.isEmpty():
+    def dequeue(self):
+        if self.is_empty():
             return
         
         temp = self.front
@@ -47,34 +50,44 @@ class Queue:
 if __name__ == '__main__':
     q = Queue()
     
-    q.EnQueue(10)
-    print(f"Queue Front : {str(q.front.data if q.front != None else 'Queue Empty')}")
-    print(f"Queue Rear  : {str(q.rear.data if q.rear != None else 'Queue Empty')}\n")
+    q.enqueue(10)
+    print(f"Number of Queue : {q.count_nodes()}")
+    print(f"Queue Rear      : {q.rear.data if q.rear else 'Queue Empty'}")
+    print(f"Queue Front     : {q.front.data if q.front else 'Queue Empty'}\n")
+
     
-    q.EnQueue(20)
-    print(f"Queue Front : {str(q.front.data if q.front != None else 'Queue Empty')}")
-    print(f"Queue Rear  : {str(q.rear.data if q.rear != None else 'Queue Empty')}\n")
+    q.enqueue(20)
+    print(f"Number of Queue : {q.count_nodes()}")
+    print(f"Queue Rear      : {q.rear.data if q.rear else 'Queue Empty'}")
+    print(f"Queue Front     : {q.front.data if q.front else 'Queue Empty'}\n")
     
-    q.DeQueue()
-    print(f"Queue Front : {str(q.front.data if q.front != None else 'Queue Empty')}")
-    print(f"Queue Rear  : {str(q.rear.data if q.rear != None else 'Queue Empty')}\n")
+    q.dequeue()
+    print(f"Number of Queue : {q.count_nodes()}")
+    print(f"Queue Rear      : {q.rear.data if q.rear else 'Queue Empty'}")
+    print(f"Queue Front     : {q.front.data if q.front else 'Queue Empty'}\n")
     
-    q.DeQueue()
-    print(f"Queue Front : {str(q.front.data if q.front != None else 'Queue Empty')}")
-    print(f"Queue Rear  : {str(q.rear.data if q.rear != None else 'Queue Empty')}\n")
+    q.dequeue()
+    print(f"Number of Queue : {q.count_nodes()}")
+    print(f"Queue Rear      : {q.rear.data if q.rear else 'Queue Empty'}")
+    print(f"Queue Front     : {q.front.data if q.front else 'Queue Empty'}\n")
+
+    q.enqueue(30)
+    print(f"Number of Queue : {q.count_nodes()}")
+    print(f"Queue Rear      : {q.rear.data if q.rear else 'Queue Empty'}")
+    print(f"Queue Front     : {q.front.data if q.front else 'Queue Empty'}\n")
+
     
-    q.EnQueue(30)
-    print(f"Queue Front : {str(q.front.data if q.front != None else 'Queue Empty')}")
-    print(f"Queue Rear  : {str(q.rear.data if q.rear != None else 'Queue Empty')}\n")
+    q.enqueue(40)
+    print(f"Number of Queue : {q.count_nodes()}")
+    print(f"Queue Rear      : {q.rear.data if q.rear else 'Queue Empty'}")
+    print(f"Queue Front     : {q.front.data if q.front else 'Queue Empty'}\n")
     
-    q.EnQueue(40)
-    print(f"Queue Front : {str(q.front.data if q.front != None else 'Queue Empty')}")
-    print(f"Queue Rear  : {str(q.rear.data if q.rear != None else 'Queue Empty')}\n")
+    q.enqueue(50)
+    print(f"Number of Queue : {q.count_nodes()}")
+    print(f"Queue Rear      : {q.rear.data if q.rear else 'Queue Empty'}")
+    print(f"Queue Front     : {q.front.data if q.front else 'Queue Empty'}\n")
     
-    q.EnQueue(50)
-    print(f"Queue Front : {str(q.front.data if q.front != None else 'Queue Empty')}")
-    print(f"Queue Rear  : {str(q.rear.data if q.rear != None else 'Queue Empty')}\n")
-    
-    q.DeQueue()
-    print(f"Queue Front : {str(q.front.data if q.front != None else 'Queue Empty')}")
-    print(f"Queue Rear  : {str(q.rear.data if q.rear != None else 'Queue Empty')}")
+    q.dequeue()
+    print(f"Number of Queue : {q.count_nodes()}")
+    print(f"Queue Rear      : {q.rear.data if q.rear else 'Queue Empty'}")
+    print(f"Queue Front     : {q.front.data if q.front else 'Queue Empty'}")

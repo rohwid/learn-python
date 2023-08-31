@@ -1,3 +1,5 @@
+from random import randint
+
 class Node:
 	def __init__(self, value):
 		self.value = value
@@ -5,7 +7,7 @@ class Node:
 
 class Queue:
     def __init__(self):
-        self.head = self.tail = None
+        self.front = self.rear = None
         self.size = 0
     
     def is_empty(self):
@@ -16,7 +18,7 @@ class Queue:
     
     # String representation of the stack
     def __str__(self):
-        cur = self.head
+        cur = self.front
         out = ""
         
         while cur:
@@ -29,32 +31,25 @@ class Queue:
             return "Queue is Empty."
     
     # Method to add an item to the queue
-    def enqueue(self, value):
-        new_node = Node(value)
+    def push(self, value):
+        push_node = Node(value)
         self.size += 1
         
-        if self.head == None:
-            self.head = self.tail = new_node
-            return
+        if not self.front:
+            self.front = self.rear = push_node
         
-        # Iteration step
-        # 0th  - [head]
-        # 1st  - [head, new_node] 
-        # 2nd  - [head, tail, new_node]
-        # n-th - [head, previous_tail, ..., tail, new_node]
-        self.tail.next = new_node # add new node as next tail node
-        self.tail = new_node # set new node as tail node
+        self.rear.next = push_node # set the push_node as the next object of previous rear node
+        self.rear = push_node # set the push_node as the new rear object
+        
+        return self.rear.value
 
 	# Method to remove an item from queue
-    def dequeue(self):
+    def pop(self):
         if self.is_empty():
             return
         
-        # Iteration step
-        # n-th - [delete_node <- previous_tail, previous_tail, ..., previous_tail]
-        # final length n = start length n - number loop range
-        pop_node = self.head
-        self.head = self.head.next
+        pop_node = self.front # set the front node to pop as pop_node
+        self.front = self.front.next # set the next object of the front node as front node
             
         self.size -= 1
         
@@ -72,14 +67,16 @@ if __name__ == '__main__':
     
     queue_info(queue)
     
-    for i in range(10):
-        queue.enqueue(i + 1)
+    for _ in range(10):
+        push = queue.push(randint(1, 9))
+        print(f"Push: {push}")
+    print()
     
     queue_info(queue)
     
     for _ in range(5):
-        remove = queue.dequeue()
-        print(f"Pop: {remove}")
-    
+        pop = queue.pop()
+        print(f"Pop: {pop}")
     print()
+    
     queue_info(queue)

@@ -18,18 +18,18 @@ class Stack:
 
   # Pushes element onto stack
   def push(self, value):
-    node = Node(value) # instantiate new node
+    push_node = Node(value) # instantiate new node
     
     if self.start == None:
-      self.start = self.top = node
+      self.start = self.top = push_node
       return
     
-    print(f"Push: {value}")
-    
     # Swapping value
-    node.prev = self.top
-    self.top.next = node
-    self.top = node
+    push_node.prev = self.top
+    self.top.next = push_node
+    self.top = push_node
+    
+    return push_node.value
 
   # Determines the size of the stack
   def stack_size(self):
@@ -50,12 +50,13 @@ class Stack:
     if self.is_empty():
       return
     
-    print(f"Pop: {self.top.value}")
-    
+    pop_node = self.top.value
     self.top = self.top.prev
     
     if self.top != None: self.top.next = None
     if self.top == None: self.start = None
+    
+    return pop_node
 
   # Prints the stack
   def print_stack(self):
@@ -99,13 +100,15 @@ if __name__ == "__main__":
 
   # Push then instantiate new node
   for i in range(10):
-    stack.push(randint(1, 9))
+    push = stack.push(randint(1, 9))
+    print(f"Push: {push}")
   print()
     
   stack_info(stack)
 
   for i in range(6):
-    stack.pop()
+    pop = stack.pop()
+    print(f"Pop: {pop}")
   print()
 
   stack_info(stack)
