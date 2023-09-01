@@ -1,16 +1,16 @@
 class graph:
-  def __init__(self, gdict=None):
-    if gdict is None:
-      gdict = {}
-    self.gdict = gdict
+  def __init__(self, graph_elements=None):
+    if graph_elements is None:
+      graph_elements = {}
+    self.graph_elements = graph_elements
    
-  def getVertices(self):
-    return list(self.gdict.keys())
+  def get_vertices(self):
+    return list(self.graph_elements.keys())
   
   # Add the vertex as a key
-  def addVertex(self, vrtx):
-    if vrtx not in self.gdict:
-      self.gdict[vrtx] = []
+  def add_vertex(self, vrtx):
+    if vrtx not in self.graph_elements:
+      self.graph_elements[vrtx] = []
 
 # Create the dictionary with graph elements
 graph_elements = { 
@@ -21,7 +21,7 @@ graph_elements = {
   "e" : ["d"]
 }
 
-g = graph(graph_elements)
-g.addVertex("f")
+graph = graph(graph_elements)
+graph.add_vertex("f")
 
-print(g.getVertices())
+print(graph.get_vertices())
