@@ -8,7 +8,7 @@ class Node:
 class Queue:
     def __init__(self):
         self.front = self.rear = None
-        self.size = 0
+        self.size = 0 # only cache and separated with node
     
     def is_empty(self):
         return self.size == 0
@@ -33,10 +33,10 @@ class Queue:
     # Method to add an item to the queue
     def push(self, value):
         push_node = Node(value)
-        self.size += 1
+        self.size += 1 # only cache and separated with node
         
         if not self.front:
-            self.front = self.rear = push_node
+            self.front = self.rear = push_node # must be equal
         
         self.rear.next = push_node # set the push_node as the next object of previous rear node
         self.rear = push_node # set the push_node as the new rear object
@@ -51,7 +51,7 @@ class Queue:
         pop_node = self.front # set the front node to pop as pop_node
         self.front = self.front.next # set the next object of the front node as front node
             
-        self.size -= 1
+        self.size -= 1 # only cache and separated with node
         
         return pop_node.value
 
