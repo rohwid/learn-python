@@ -1,2 +1,2 @@
-str = input("Enter your input: ")
-print("Received input is : ", str)
+inputs = input("Enter your input: ")
+print("Received input is : ", inputs)
